@@ -31,14 +31,14 @@ I built AI chat features in production apps, and the same problems show up every
 
 ```mermaid
 flowchart LR
-    V[ChatView<br/>SwiftUI] -- send / stop / retry --> VM[ChatViewModel<br/>@MainActor @Observable]
-    VM -- messages --> V
-    VM -- history --> S{{ChatStreamingService}}
-    S --> O[OpenAICompatibleService]
-    S --> M[MockChatService]
-    O -- URLSession.bytes --> L[SSELineSequence]
-    L --> P[ServerSentEventSequence]
-    P -- tokens --> VM
+    V["ChatView (SwiftUI)"] -- "send, stop, retry" --> VM["ChatViewModel (@MainActor, @Observable)"]
+    VM -- "messages" --> V
+    VM -- "history" --> S{{"ChatStreamingService"}}
+    S --> O["OpenAICompatibleService"]
+    S --> M["MockChatService"]
+    O -- "URLSession.bytes" --> L["SSELineSequence"]
+    L --> P["ServerSentEventSequence"]
+    P -- "tokens" --> VM
 ```
 
 1. The view calls `send()`. The view model adds the user message and an empty assistant message.

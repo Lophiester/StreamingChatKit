@@ -30,7 +30,7 @@ I built AI chat features in production apps, and the same problems show up every
 ## How it works
 
 ```mermaid
-flowchart LR
+flowchart TD
     V["ChatView (SwiftUI)"] -- "send, stop, retry" --> VM["ChatViewModel (@MainActor, @Observable)"]
     VM -- "messages" --> V
     VM -- "history" --> S{{"ChatStreamingService"}}
